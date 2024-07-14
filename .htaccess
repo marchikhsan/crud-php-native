@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+
+# Nonaktifkan aturan penulisan ulang untuk file atau direktori yang ada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Aturan untuk /page/subpage
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?page=$1-$2 [QSA,L]
+RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)$ index.php?page=$1-$2&id=$3 [QSA,L]
+
+# Aturan untuk /page
+RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?page=$1 [QSA,L]
